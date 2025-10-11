@@ -22,7 +22,7 @@ export default function Home() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [showEmojis, setShowEmojis] = useState(false);
 
-  // 텍스트 변환
+  // Text conversion
   useEffect(() => {
     if (inputText) {
       setConvertedText(selectedFont.convert(inputText));
@@ -31,25 +31,25 @@ export default function Home() {
     }
   }, [inputText, selectedFont]);
 
-  // 복사 기능
+  // Copy function
   const handleCopy = async (text: string, index: number) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(null), 2000);
     } catch (err) {
-      alert('복사에 실패했습니다.');
+      alert('Failed to copy to clipboard.');
     }
   };
 
-  // Farcaster 공유
+  // Share on Farcaster
   const handleShare = (text: string) => {
     const shareText = encodeURIComponent(text);
     const farcasterUrl = `https://warpcast.com/~/compose?text=${shareText}`;
     window.open(farcasterUrl, '_blank');
   };
 
-  // 이모지 추가
+  // Add emoji
   const addEmoji = (emoji: string) => {
     setInputText(prev => prev + emoji);
     setShowEmojis(false);
@@ -57,7 +57,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
-      {/* 헤더 */}
+      {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center gap-3">
@@ -68,41 +68,41 @@ export default function Home() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Fontify
               </h1>
-              <p className="text-sm text-gray-600">Farcaster 폰트 변환기</p>
+              <p className="text-sm text-gray-600">Font Converter for Farcaster</p>
             </div>
           </div>
         </div>
       </header>
 
-      {/* 메인 컨텐츠 */}
+      {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* 입력 영역 */}
+        {/* Input Area */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 fade-in">
           <div className="flex items-center gap-2 mb-4">
             <Type className="w-5 h-5 text-purple-600" />
-            <h2 className="text-lg font-semibold text-gray-800">텍스트 입력</h2>
+            <h2 className="text-lg font-semibold text-gray-800">Text Input</h2>
           </div>
           
           <div className="relative">
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              placeholder="변환할 텍스트를 입력하세요..."
+              placeholder="Enter text to convert..."
               className="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:outline-none resize-none transition-colors"
               rows={4}
             />
             
-            {/* 이모지 버튼 */}
+            {/* Emoji Button */}
             <button
               onClick={() => setShowEmojis(!showEmojis)}
               className="absolute bottom-4 right-4 p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
-              title="이모지 추가"
+              title="Add Emoji"
             >
               <Smile className="w-5 h-5 text-purple-600" />
             </button>
           </div>
 
-          {/* 이모지 선택기 */}
+          {/* Emoji Picker */}
           {showEmojis && (
             <div className="mt-4 p-4 bg-purple-50 rounded-xl fade-in">
               {Object.entries(emojiCategories).map(([category, emojis]) => (
@@ -125,9 +125,9 @@ export default function Home() {
           )}
         </div>
 
-        {/* 폰트 스타일 선택 */}
+        {/* Font Style Selection */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 fade-in">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">폰트 스타일</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Font Styles</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {fontStyles.map((style) => (
               <button
@@ -146,9 +146,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 미리보기 및 결과 */}
+        {/* Preview and Result */}
         <div className="bg-white rounded-2xl shadow-lg p-6 fade-in">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">미리보기</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Preview</h2>
           
           <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 mb-4">
             <p
@@ -157,11 +157,11 @@ export default function Home() {
                 minHeight: '60px',
               }}
             >
-              {convertedText || '여기에 변환된 텍스트가 표시됩니다'}
+              {convertedText || 'Your converted text will appear here'}
             </p>
           </div>
 
-          {/* 액션 버튼 */}
+          {/* Action Buttons */}
           {convertedText && (
             <div className="flex flex-wrap gap-3">
               <button
@@ -171,12 +171,12 @@ export default function Home() {
                 {copiedIndex === -1 ? (
                   <>
                     <Check className="w-5 h-5" />
-                    복사됨!
+                    Copied!
                   </>
                 ) : (
                   <>
                     <Copy className="w-5 h-5" />
-                    복사하기
+                    Copy
                   </>
                 )}
               </button>
@@ -186,17 +186,17 @@ export default function Home() {
                 className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl btn-hover font-medium"
               >
                 <Share2 className="w-5 h-5" />
-                Farcaster에 공유
+                Share on Farcaster
               </button>
             </div>
           )}
         </div>
 
-        {/* 모든 스타일 미리보기 */}
+        {/* All Styles Preview */}
         {inputText && (
           <div className="bg-white rounded-2xl shadow-lg p-6 mt-6 fade-in">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">
-              모든 스타일 미리보기
+              All Styles Preview
             </h2>
             <div className="space-y-4">
               {fontStyles.map((style, index) => {
@@ -218,7 +218,7 @@ export default function Home() {
                       <button
                         onClick={() => handleCopy(converted, index)}
                         className="p-2 bg-purple-100 hover:bg-purple-200 rounded-lg transition-colors"
-                        title="복사"
+                        title="Copy"
                       >
                         {copiedIndex === index ? (
                           <Check className="w-5 h-5 text-purple-600" />
@@ -229,7 +229,7 @@ export default function Home() {
                       <button
                         onClick={() => handleShare(converted)}
                         className="p-2 bg-blue-100 hover:bg-blue-200 rounded-lg transition-colors"
-                        title="공유"
+                        title="Share"
                       >
                         <Share2 className="w-5 h-5 text-blue-600" />
                       </button>
@@ -242,7 +242,7 @@ export default function Home() {
         )}
       </main>
 
-      {/* 푸터 */}
+      {/* Footer */}
       <footer className="bg-white/80 backdrop-blur-sm mt-12 py-6">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600">
           <p className="text-sm">

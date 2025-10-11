@@ -1,4 +1,4 @@
-// 유니코드 기반 폰트 변환 유틸리티
+// Unicode-based font conversion utility
 
 export interface FontStyle {
   name: string;
@@ -7,7 +7,7 @@ export interface FontStyle {
   convert: (text: string) => string;
 }
 
-// 특수 효과 함수들
+// Special effect functions
 function addUnderline(text: string): string {
   return text.split('').map(char => char + '\u0332').join('');
 }
@@ -83,7 +83,7 @@ function squareText(text: string): string {
   return text.split('').map(char => map[char] || char).join('');
 }
 
-// 올드 잉글리쉬 스타일 (Medieval/Gothic 스타일 텍스트)
+// Old English style (Medieval/Gothic style text)
 function oldEnglishText(text: string): string {
   const map: Record<string, string> = {
     'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': 'ℌ',
@@ -99,7 +99,7 @@ function oldEnglishText(text: string): string {
   return text.split('').map(char => map[char] || char).join('');
 }
 
-// 윤곽 텍스트 (Outlined/Hollow 스타일)
+// Outlined text (Outlined/Hollow style)
 function outlinedText(text: string): string {
   const map: Record<string, string> = {
     'A': '🅐', 'B': '🅑', 'C': '🅒', 'D': '🅓', 'E': '🅔', 'F': '🅕', 'G': '🅖', 'H': '🅗',
@@ -115,71 +115,71 @@ function outlinedText(text: string): string {
   return text.split('').map(char => map[char] || char).join('');
 }
 
-// 폰트 스타일 정의
+// Font style definitions
 export const fontStyles: FontStyle[] = [
   {
     name: 'normal',
-    displayName: '일반',
-    description: '기본 텍스트',
+    displayName: 'Normal',
+    description: 'Basic text',
     convert: (text: string) => text,
   },
   {
     name: 'underline',
-    displayName: '밑줄',
-    description: '밑줄 효과',
+    displayName: 'Underline',
+    description: 'Underline effect',
     convert: addUnderline,
   },
   {
     name: 'strikethrough',
-    displayName: '취소선',
-    description: '취소선 효과',
+    displayName: 'Strikethrough',
+    description: 'Strikethrough effect',
     convert: addStrikethrough,
   },
   {
     name: 'reverse',
-    displayName: '뒤집기',
-    description: '좌우 반전',
+    displayName: 'Reverse',
+    description: 'Reversed text',
     convert: reverseText,
   },
   {
     name: 'upsideDown',
-    displayName: '거꾸로',
-    description: '상하 반전',
+    displayName: 'Upside Down',
+    description: 'Upside down text',
     convert: upsideDown,
   },
   {
     name: 'wide',
-    displayName: '넓게',
-    description: '전각 문자',
+    displayName: 'Wide',
+    description: 'Full-width text',
     convert: wideText,
   },
   {
     name: 'bubble',
-    displayName: '버블',
-    description: '동그라미 효과',
+    displayName: 'Bubble',
+    description: 'Bubble style',
     convert: bubbleText,
   },
   {
     name: 'square',
-    displayName: '사각형',
-    description: '네모 효과',
+    displayName: 'Square',
+    description: 'Square style',
     convert: squareText,
   },
   {
     name: 'oldEnglish',
-    displayName: '올드 잉글리쉬',
-    description: '중세 스타일',
+    displayName: 'Old English',
+    description: 'Medieval style',
     convert: oldEnglishText,
   },
   {
     name: 'outlined',
-    displayName: '윤곽',
-    description: '윤곽 텍스트',
+    displayName: 'Outlined',
+    description: 'Outlined text',
     convert: outlinedText,
   },
 ];
 
-// 이모지 및 특수문자 모음
+// Emoji and special character collections
 export const emojiCategories = {
   symbols: ['✓', '✗', '✔️', '✖️', '◉', '●', '○', '◆', '◇', '★'],
   decorative: ['｡･:*:･ﾟ★', '✧･ﾟ', '♪', '♫', '☆', '✿', '❀', '✾', '✽', '❁'],

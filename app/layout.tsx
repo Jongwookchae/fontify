@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Fontify - 폰트 변환기',
-  description: 'Farcaster를 위한 다양한 폰트 스타일 변환 미니앱',
+  title: 'Fontify - Font Converter',
+  description: 'A mini-app for converting text into various font styles for Farcaster',
 }
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko">
+    <html lang="en">
       <body>{children}</body>
     </html>
   )
