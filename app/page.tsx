@@ -68,7 +68,7 @@ export default function Home() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Fontify
               </h1>
-              <p className="text-sm text-gray-600">Font Converter for Farcaster</p>
+              <p className="text-sm text-gray-600">Fonts for Everyone</p>
             </div>
           </div>
         </div>
