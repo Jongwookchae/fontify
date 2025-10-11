@@ -1,0 +1,34 @@
+{
+  "miniapp": {
+    "version": "1",
+    "name": "Fontify",
+    "iconUrl": "https://your-domain.com/icon.png",
+    "homeUrl": "https://your-domain.com",
+    "imageUrl": "https://your-domain.com/og-image.png",
+    "buttonTitle": "✨ Transform Text",
+    "splashImageUrl": "https://your-domain.com/splash.png",
+    "splashBackgroundColor": "#8B5CF6",
+    "subtitle": "Fonts for Everyone",
+    "description": "Transform your text into beautiful font styles with Fontify. Choose from 10+ unique styles including underline, bubble, old english, and more. Perfect for making your Farcaster posts stand out!",
+    "screenshotUrls": [
+      "https://your-domain.com/screenshot1.png",
+      "https://your-domain.com/screenshot2.png",
+      "https://your-domain.com/screenshot3.png"
+    ],
+    "tagline": "Transform text with style",
+    "primaryCategory": "utilities",
+    "tags": [
+      "fonts",
+      "text",
+      "styling",
+      "conversion",
+      "design",
+      "creative",
+      "social"
+    ],
+    "heroImageUrl": "https://your-domain.com/og-image.png",
+    "ogTitle": "Fontify - Fonts for Everyone",
+    "ogDescription": "Transform your text into beautiful font styles. 10+ unique styles to make your posts stand out.",
+    "ogImageUrl": "https://your-domain.com/og-image.png"
+  }
+}
