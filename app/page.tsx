@@ -246,10 +246,10 @@ export default function Home() {
       <footer className="bg-white/80 backdrop-blur-sm mt-12 py-6">
         <div className="max-w-6xl mx-auto px-4 text-center text-gray-600">
           <p className="text-sm">
-            Made with ❤️ for Farcaster Community
+            Made by @wookii for Farcaster Community
           </p>
           <p className="text-xs mt-2">
-            © 2024 Fontify. All rights reserved.
+            © 2025 Fontify. All rights reserved.
           </p>
         </div>
       </footer>
