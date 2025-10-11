@@ -7,137 +7,6 @@ export interface FontStyle {
   convert: (text: string) => string;
 }
 
-// 유니코드 폰트 매핑
-const fontMaps = {
-  // 볼드 (Mathematical Bold)
-  bold: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D400 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D41A + i);
-      return acc;
-    }, {} as Record<string, string>),
-    numbers: '0123456789'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D7CE + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // 이탤릭 (Mathematical Italic)
-  italic: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D434 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D44E + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // 볼드 이탤릭
-  boldItalic: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D468 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D482 + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // 필기체 (Mathematical Script)
-  script: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D49C + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D4B6 + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // 고딕체 (Fraktur)
-  fraktur: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D504 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D51E + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // 모노스페이스 (Monospace)
-  monospace: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D670 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D68A + i);
-      return acc;
-    }, {} as Record<string, string>),
-    numbers: '0123456789'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D7F6 + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // 더블 스트럭 (Double-struck)
-  doubleStruck: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D538 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D552 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    numbers: '0123456789'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D7D8 + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-  
-  // Sans-serif
-  sansSerif: {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D5A0 + i);
-      return acc;
-    }, {} as Record<string, string>),
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D5BA + i);
-      return acc;
-    }, {} as Record<string, string>),
-    numbers: '0123456789'.split('').reduce((acc, char, i) => {
-      acc[char] = String.fromCharCode(0x1D7E2 + i);
-      return acc;
-    }, {} as Record<string, string>),
-  },
-};
-
-// 텍스트 변환 함수
-function convertText(text: string, fontMap: any): string {
-  return text.split('').map(char => {
-    if (fontMap.uppercase && fontMap.uppercase[char]) {
-      return fontMap.uppercase[char];
-    }
-    if (fontMap.lowercase && fontMap.lowercase[char]) {
-      return fontMap.lowercase[char];
-    }
-    if (fontMap.numbers && fontMap.numbers[char]) {
-      return fontMap.numbers[char];
-    }
-    return char;
-  }).join('');
-}
-
 // 특수 효과 함수들
 function addUnderline(text: string): string {
   return text.split('').map(char => char + '\u0332').join('');
@@ -214,6 +83,38 @@ function squareText(text: string): string {
   return text.split('').map(char => map[char] || char).join('');
 }
 
+// 올드 잉글리쉬 스타일 (Medieval/Gothic 스타일 텍스트)
+function oldEnglishText(text: string): string {
+  const map: Record<string, string> = {
+    'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉', 'G': '𝔊', 'H': 'ℌ',
+    'I': 'ℑ', 'J': '𝔍', 'K': '𝔎', 'L': '𝔏', 'M': '𝔐', 'N': '𝔑', 'O': '𝔒', 'P': '𝔓',
+    'Q': '𝔔', 'R': 'ℜ', 'S': '𝔖', 'T': '𝔗', 'U': '𝔘', 'V': '𝔙', 'W': '𝔚', 'X': '𝔛',
+    'Y': '𝔜', 'Z': 'ℨ',
+    'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔤', 'h': '𝔥',
+    'i': '𝔦', 'j': '𝔧', 'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭',
+    'q': '𝔮', 'r': '𝔯', 's': '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵',
+    'y': '𝔶', 'z': '𝔷',
+  };
+  
+  return text.split('').map(char => map[char] || char).join('');
+}
+
+// 윤곽 텍스트 (Outlined/Hollow 스타일)
+function outlinedText(text: string): string {
+  const map: Record<string, string> = {
+    'A': '🅐', 'B': '🅑', 'C': '🅒', 'D': '🅓', 'E': '🅔', 'F': '🅕', 'G': '🅖', 'H': '🅗',
+    'I': '🅘', 'J': '🅙', 'K': '🅚', 'L': '🅛', 'M': '🅜', 'N': '🅝', 'O': '🅞', 'P': '🅟',
+    'Q': '🅠', 'R': '🅡', 'S': '🅢', 'T': '🅣', 'U': '🅤', 'V': '🅥', 'W': '🅦', 'X': '🅧',
+    'Y': '🅨', 'Z': '🅩',
+    'a': '🅐', 'b': '🅑', 'c': '🅒', 'd': '🅓', 'e': '🅔', 'f': '🅕', 'g': '🅖', 'h': '🅗',
+    'i': '🅘', 'j': '🅙', 'k': '🅚', 'l': '🅛', 'm': '🅜', 'n': '🅝', 'o': '🅞', 'p': '🅟',
+    'q': '🅠', 'r': '🅡', 's': '🅢', 't': '🅣', 'u': '🅤', 'v': '🅥', 'w': '🅦', 'x': '🅧',
+    'y': '🅨', 'z': '🅩',
+  };
+  
+  return text.split('').map(char => map[char] || char).join('');
+}
+
 // 폰트 스타일 정의
 export const fontStyles: FontStyle[] = [
   {
@@ -221,54 +122,6 @@ export const fontStyles: FontStyle[] = [
     displayName: '일반',
     description: '기본 텍스트',
     convert: (text: string) => text,
-  },
-  {
-    name: 'bold',
-    displayName: '볼드',
-    description: '굵은 글씨',
-    convert: (text: string) => convertText(text, fontMaps.bold),
-  },
-  {
-    name: 'italic',
-    displayName: '이탤릭',
-    description: '기울임 글씨',
-    convert: (text: string) => convertText(text, fontMaps.italic),
-  },
-  {
-    name: 'boldItalic',
-    displayName: '볼드 이탤릭',
-    description: '굵은 기울임',
-    convert: (text: string) => convertText(text, fontMaps.boldItalic),
-  },
-  {
-    name: 'script',
-    displayName: '필기체',
-    description: '손글씨 스타일',
-    convert: (text: string) => convertText(text, fontMaps.script),
-  },
-  {
-    name: 'fraktur',
-    displayName: '고딕체',
-    description: '클래식 스타일',
-    convert: (text: string) => convertText(text, fontMaps.fraktur),
-  },
-  {
-    name: 'monospace',
-    displayName: '고정폭',
-    description: '코드 스타일',
-    convert: (text: string) => convertText(text, fontMaps.monospace),
-  },
-  {
-    name: 'doubleStruck',
-    displayName: '더블 라인',
-    description: '이중선 스타일',
-    convert: (text: string) => convertText(text, fontMaps.doubleStruck),
-  },
-  {
-    name: 'sansSerif',
-    displayName: '산세리프',
-    description: '깔끔한 스타일',
-    convert: (text: string) => convertText(text, fontMaps.sansSerif),
   },
   {
     name: 'underline',
@@ -312,13 +165,22 @@ export const fontStyles: FontStyle[] = [
     description: '네모 효과',
     convert: squareText,
   },
+  {
+    name: 'oldEnglish',
+    displayName: '올드 잉글리쉬',
+    description: '중세 스타일',
+    convert: oldEnglishText,
+  },
+  {
+    name: 'outlined',
+    displayName: '윤곽',
+    description: '윤곽 텍스트',
+    convert: outlinedText,
+  },
 ];
 
 // 이모지 및 특수문자 모음
 export const emojiCategories = {
-  hearts: ['❤️', '💕', '💖', '💗', '💓', '💞', '💝', '♥️', '❣️', '💘'],
-  stars: ['⭐', '🌟', '✨', '💫', '⚡', '🔥', '💥', '✴️', '🌠', '🎆'],
-  arrows: ['→', '←', '↑', '↓', '↔', '↕', '➡️', '⬅️', '⬆️', '⬇️'],
   symbols: ['✓', '✗', '✔️', '✖️', '◉', '●', '○', '◆', '◇', '★'],
   decorative: ['｡･:*:･ﾟ★', '✧･ﾟ', '♪', '♫', '☆', '✿', '❀', '✾', '✽', '❁'],
 };
