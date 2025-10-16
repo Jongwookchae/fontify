@@ -1,32 +1,37 @@
 {
+  "accountAssociation": {
+    "header": "eyJmaWQiOjExMDcyNjUsInR5cGUiOiJhdXRoIiwia2V5IjoiMHg5MDg2MTg3MzBBY2IzM2NCODFBQjZCN2M1NzQ2ODg0ZWNlMjYwM0FmIn0",
+    "payload": "eyJkb21haW4iOiJmb250aWZ5LW5pbmUudmVyY2VsLmFwcCJ9",
+    "signature": "GUguh4vMJSxzc0ik3qPC/qlPqW+ss9A0iVQ3zdWL53VR7M9OxdUp7g2RTkq8g02eGECpLZg3sweiZpPlcR15zRs="
+  },
   "miniapp": {
     "version": "1",
     "name": "Fontify",
-    "iconUrl": "https://YOUR_VERCEL_DOMAIN/icon-1024.png",
-    "homeUrl": "https://YOUR_VERCEL_DOMAIN",
-    "imageUrl": "https://YOUR_VERCEL_DOMAIN/og.png",
+    "iconUrl": "https://fontify-nine.vercel.app/icon-1024.png",
+    "homeUrl": "https://fontify-nine.vercel.app",
+    "imageUrl": "https://fontify-nine.vercel.app/og.png",
     "buttonTitle": "✨ Transform Text",
-    "splashImageUrl": "https://YOUR_VERCEL_DOMAIN/splash-200.png",
+    "splashImageUrl": "https://fontify-nine.vercel.app/splash-200.png",
     "splashBackgroundColor": "#8B5CF6",
     "subtitle": "Fonts for Everyone",
-    "description": "Transform your text into beautiful font styles with Fontify. Choose from 10+ unique styles including underline, bubble, old english, and more. Perfect for making your Farcaster posts stand out!",
+    "description": "Transform your text into beautiful font styles with Fontify. Choose unique styles including underline, bubble, old english, and more.",
     "screenshotUrls": [
-      "https://YOUR_VERCEL_DOMAIN/og.png"
+      "https://fontify-nine.vercel.app/og.png"
     ],
     "tagline": "Transform text with style",
-    "primaryCategory": "utilities",
+    "primaryCategory": "utility",
     "tags": [
       "fonts",
       "text",
       "styling",
-      "conversion",
+      "utility",
       "design",
       "creative",
       "social"
     ],
-    "heroImageUrl": "https://YOUR_VERCEL_DOMAIN/og.png",
+    "heroImageUrl": "https://fontify-nine.vercel.app/og.png",
     "ogTitle": "Fontify - Fonts for Everyone",
-    "ogDescription": "Transform your text into beautiful font styles. 10+ unique styles to make your posts stand out.",
-    "ogImageUrl": "https://YOUR_VERCEL_DOMAIN/og.png"
+    "ogDescription": "Transform your text into beautiful font styles. unique styles to make your posts stand out.",
+    "ogImageUrl": "https://fontify-nine.vercel.app/og.png"
   }
 }
