@@ -2,6 +2,13 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/.well-known/farcaster.json",
+      "destination": "https://api.farcaster.xyz/miniapps/hosted-manifest/0199ee35-b844-1cd4-eab2-ad456bbf5373",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/.well-known/farcaster.json",
