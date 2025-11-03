@@ -32,7 +32,23 @@ export default function RootLayout({
       <head>
         <meta name="fc:frame" content="vNext" />
         <meta name="fc:frame:image" content="/og.png" />
-        <meta name="fc:frame:button:1" content="✨ Transform Text" />
+        {/* <meta name="fc:frame:button:1" content="✨ Transform Text" /> */}
+        <meta
+      name="fc:miniapp"
+      content='{
+        "version": "0.1.0",
+        "imageUrl": "https://fontify-nine.vercel.app/og.png",
+        "button": {
+          "title": "Fontify",
+          "action": {
+            "type": "launch_frame",
+            "name": "Fontify",
+            "url": "https://fontify-nine.vercel.app/",
+            "splashImageUrl": "https://fontify-nine.vercel.app/splash-200.png",
+            "splashBackgroundColor": "#8B5CF6"
+          }
+        }
+      }'/>
       </head>
       <body>{children}</body>
     </html>
