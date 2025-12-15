@@ -1,24 +1,51 @@
 import type { Metadata } from 'next'
 import './globals.css'
 
+const miniappEmbed = {
+  version: '1',
+  imageUrl: 'https://fontify-nine.vercel.app/og.png',
+  button: {
+    title: '✨ Transform Text',
+    action: {
+      type: 'launch_miniapp',
+      name: 'Fontify',
+      url: 'https://fontify-nine.vercel.app',
+      splashImageUrl: 'https://fontify-nine.vercel.app/splash-200.png',
+      splashBackgroundColor: '#8B5CF6',
+    },
+  },
+};
+
 export const metadata: Metadata = {
   title: 'Fontify - Fonts for Everyone',
-  description: 'Transform your text into beautiful font styles with Fontify. Choose from 10+ unique styles including underline, bubble, old english, and more. Perfect for making your Farcaster posts stand out!',
+  description: 'Transform your text into beautiful font styles with Fontify. Choose from unique styles including underline, bubble, old english, and more.',
+  icons: {
+    icon: '/icon-1024.png',
+    apple: '/icon-1024.png',
+  },
   openGraph: {
     title: 'Fontify - Fonts for Everyone',
-    description: 'Transform your text into beautiful font styles. 10+ unique styles to make your posts stand out.',
-    images: ['/og.png'],
+    description: 'Transform your text into beautiful font styles. Unique styles to make your posts stand out.',
+    url: 'https://fontify-nine.vercel.app',
+    siteName: 'Fontify',
+    images: [
+      {
+        url: 'https://fontify-nine.vercel.app/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Fontify - Fonts for Everyone',
+      },
+    ],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Fontify - Fonts for Everyone',
-    description: 'Transform your text into beautiful font styles. 10+ unique styles to make your posts stand out.',
-    images: ['/og.png'],
+    description: 'Transform your text into beautiful font styles.',
+    images: ['https://fontify-nine.vercel.app/og.png'],
   },
-  icons: {
-    icon: '/icon-1024.png',
-    apple: '/icon-1024.png',
+  other: {
+    'fc:miniapp': JSON.stringify(miniappEmbed),
   },
 }
 
@@ -29,27 +56,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="fc:frame" content="vNext" />
-        <meta name="fc:frame:image" content="/og.png" />
-        {/* <meta name="fc:frame:button:1" content="✨ Transform Text" /> */}
-        <meta
-      name="fc:miniapp"
-      content='{
-        "version": "0.1.0",
-        "imageUrl": "https://fontify-nine.vercel.app/og.png",
-        "button": {
-          "title": "Fontify",
-          "action": {
-            "type": "launch_frame",
-            "name": "Fontify",
-            "url": "https://fontify-nine.vercel.app/",
-            "splashImageUrl": "https://fontify-nine.vercel.app/splash-200.png",
-            "splashBackgroundColor": "#8B5CF6"
-          }
-        }
-      }'/>
-      </head>
       <body>{children}</body>
     </html>
   )
